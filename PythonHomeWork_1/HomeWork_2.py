@@ -12,33 +12,44 @@ import os  # Імпорт для роботи з файловою системо
 -метод, який виводить інформацію про книгу
 -метод, який повертає True, якщо кількість сторінок більша за 300, інакше False.
 """
-class Book:  # Оголошення класу Book (Книга)
-    def __init__(self, title, author, pages):   # Метод ініціалізації (конструктор), приймає назву, автора і кількість сторінок
+class Book:  # Оголошення класу Book (Книга), що об'єднує вимоги Завдань 1 та 3
+    def __init__(self, title, author, pages, book_id=None):   # Метод ініціалізації
         self.title = title      # Встановлює атрибут (через setter) назву книги
         self.author = author    # Встановлює атрибут (через setter) автора книги
         self.pages = pages      # Встановлює атрибут кількість сторінок (через setter)
+        self.book_id = book_id  # Ідентифікатор книги (для Завдання 3)
+
     @property
     def title(self):            # Гетер для властивості title (назва)
         return self._title      # Повертає значення "приватного" атрибута _title
+
     @title.setter
     def title(self, value):     # Сетер для властивості title (назва)
         self._title = value     # Встановлює значення "приватного" атрибута _title
+
     @property
     def author(self):           # Гетер для властивості author (автор)
         return self._author     # Повертає значення "приватного" атрибута _author
+
     @author.setter
     def author(self, value):    # Сетер для властивості author (автор)
         self._author = value    # Встановлює значення "приватного" атрибута _author
+
     @property
     def pages(self):            # Гетер для властивості pages (кількість сторінок)
         return self._pages      # Повертає значення "приватного" атрибута _pages
+
     @pages.setter
     def pages(self, value):     # Сетер для властивості pages (кількість сторінок)
         self._pages = value     # Встановлює значення "приватного" атрибута _pages
+
     def display_info(self):     # Метод для виведення інформації про книгу
+        if self.book_id:
+            print(f"ID: {self.book_id}")
         print(f"Назва: {self.title}")
         print(f"Автор: {self.author}")
         print(f"Кількість сторінок: {self.pages}")
+
     def is_long_book(self):     # Метод, який повертає True, якщо кількість сторінок більша за 300
         return self.pages > 300  # Повертає True, якщо pages > 300, інакше False
 
@@ -90,18 +101,9 @@ class CacheMethod:  # Клас-декоратор для кешування ре
 - видалити книгу за ідентифікатором
 шукати книгу за назвою та повертати її інформацію
 """
-class Book:  # Клас Book для третього завдання
-    def __init__(self, title, author, pages, book_id):  # Конструктор класу Book
-        self.title = title          # Назва книги
-        self.author = author        # Автор книги
-        self.pages = pages          # Кількість сторінок
-        self.book_id = book_id      # Ідентифікатор книги
-    
-    def display_info(self):         # Метод для виведення інформації про книгу
-        print(f"ID: {self.book_id}")
-        print(f"Назва: {self.title}")
-        print(f"Автор: {self.author}")
-        print(f"Кількість сторінок: {self.pages}")
+
+# Примітка: Клас Book визначено вище, він підтримує вимоги як Завдання 1, так і Завдання 3.
+
 
 
 class Library:  # Клас Library для управління бібліотекою книг
